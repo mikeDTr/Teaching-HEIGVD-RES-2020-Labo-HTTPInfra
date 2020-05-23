@@ -1,0 +1,26 @@
+# RES-2020-Labo-HTTPInfra
+
+## Etape 1
+Pour cette premiere étape nous devons suivre les instructions données dans le webcast. 
+Les objectifs sont de créer (ou fork) un repo github afin d'y mettre le projet, d'installer un serveur httpd apache sur un conteneur Dock et d'y faire tourner un site web.
+
+Afin de se faire nous utilisons comme montrer dans le webcast une image apache venant de Docker Hub.
+Le Docker file est configurer comme suit, le "COPY" servant à utiliser les fichiers dedier au site web en local.
+
+``` 
+FROM php:7.0-apache
+COPY src/ /var/www/html/
+```
+
+Nous faison des tests en ajoutant un simple fichier index.html afin de verifier le bon fonctionnement du conteneur. Celui-ci est build et lancer apres chaques modification grâce aux commandes 
+
+```
+bash
+docker build -t res/apache-php .
+docker run -d -p 9090:80 res/apache_php
+```
+
+une fois tout fonctionnel nous utilisons un template pris sur bootstrap afin de rendre le site plus attrayant.
+
+## Etape 2
+
