@@ -24,3 +24,45 @@ une fois tout fonctionnel nous utilisons un template pris sur bootstrap afin de 
 
 ## Etape 2
 
+L'objectif de cette partie est de créer un application web en suivant les directives du webcast, mais sans pour autant y copier.
+Un conteneur utilisant node.js est donc créé grace au dockerfile suivant.
+
+``` 
+FROM node:12.16
+
+Copy src /opt/app
+
+CMD ["node", "/opt/app/index.js"]
+```
+
+Nous fixons l'entry point dans "index.js", et c'est donc la que notre code JS est placé.
+Nous faison dabord un test du bon fonctionnement de notre code grace au module "chance" qui nous retourne des noms aléatoire, puis faisons une fonction grâce au module "express" qui retourne 15 fausses destinations pour vos prochaines vacances
+
+```
+function nextTrip(){
+
+	var trips = [];
+	
+	for(var i = 0; i < 15; ++i){
+		trips.push({
+            
+            'country' : chance.country({ full: true }),
+            'adress'    : chance.address(),
+            'altitude' : chance.altitude({ max: 1000 }),
+            'coordinate' : chance.coordinates(),
+		});
+	}
+	console.log(trips);
+	return trips;
+}
+```
+
+Pour build et lancer des conteneurs avec l'image  docker contenant node js nous utilisont les même commande que dans l'étape précédente mais avec "res/express_student"
+
+```
+bash
+docker build -t res/express_student .
+docker run -d -p 9090:9090 res/express_student
+```
+
+
