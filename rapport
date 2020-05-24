@@ -65,4 +65,5 @@ docker build -t res/express_student .
 docker run -d -p 9090:9090 res/express_student
 ```
 
+Nous avons décider d'utiliser le port 9090 car une autre àpplication utilise deja le port 3000
 
