@@ -16,7 +16,7 @@ Nous faison des tests en ajoutant un simple fichier index.html afin de verifier 
 
 ```
 bash
-docker build -t res/apache-php .
+docker build -t res/apache_php .
 docker run -d -p 9090:80 res/apache_php
 ```
 
@@ -66,4 +66,6 @@ docker run -d -p 9090:9090 res/express_student
 ```
 
 Nous avons décider d'utiliser le port 9090 car une autre àpplication utilise deja le port 3000
+
+## Etape 3
 
